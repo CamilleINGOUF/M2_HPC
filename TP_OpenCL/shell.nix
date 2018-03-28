@@ -1,5 +1,3 @@
-# nix-shell --cores 8
-
 with import<nixpkgs> {};
 
 let
@@ -8,28 +6,25 @@ let
     enableFfmpeg = true;
     enableIpp = true;
   };
-
-    _opencv3_att = _opencv3.overrideDerivation (attrs: {
-        cmakeFlags = [attrs.cmakeFlags "-DENABLE_PRECOMPILED_HEADERS=OFF"];
-    });
 in
 
 stdenv.mkDerivation {
 
-  name = "hpcOpenCV";
+  name = "hpcOpenCL";
 
   buildInputs = [
-    boost
-    ffmpeg
+    opencl-icd
+    opencl-clhpp
+    opencl-headers
+    opencl-info
+
+    _opencv3
     gcc
     gnuplot
     gnome3.eog
     gnome3.gtkmm
     imagemagick
-    _opencv3
     pkgconfig
-    vlc
-    zlib
   ];
 
 }
