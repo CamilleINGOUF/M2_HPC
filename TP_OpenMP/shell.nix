@@ -2,7 +2,7 @@ with import<nixpkgs> {};
 
 stdenv.mkDerivation {
 
-  name = "hpcThreads";
+  name = "hpcOpenMP";
 
   buildInputs = [
     gcc
