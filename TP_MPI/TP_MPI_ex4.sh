@@ -24,7 +24,7 @@ gnuplot -e "set out '$PNG_FILE'; \
     set style data linespoints; \
     set grid xtics ytics; \
     set key top left; \
-    plot '$DAT_FILE' using 1:1 title 'speed-up ideal', '$DAT_FILE' using 1:($T1/\$3) title 'speed-up mesuré'"
+    plot '$DAT_FILE' using 1:1 lw 2 title 'speed-up ideal', '$DAT_FILE' using 1:($T1/\$3) lw 2 title 'speed-up mesuré'"
 
 eog $PNG_FILE
 

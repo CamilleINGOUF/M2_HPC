@@ -2,6 +2,8 @@
 #include <chrono>
 #include <functional>
 #include <iostream>
+#include <numeric>
+#include <vector>
 
 #include <mpi.h>
 

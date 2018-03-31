@@ -1,16 +1,10 @@
 with import<nixpkgs> {};
 
-let
-  _opencv3 = opencv3.override { 
-    enableGtk3 = true;
-    enableFfmpeg = true;
-    enableIpp = true;
-  };
-in
-
 stdenv.mkDerivation {
 
   name = "hpcOpenCL";
+
+  src = ./.;
 
   buildInputs = [
     opencl-icd
@@ -18,14 +12,17 @@ stdenv.mkDerivation {
     opencl-headers
     opencl-info
 
-    _opencv3
-    gcc
-    gnuplot
+    opencv3
+    gnumake
     gnome3.eog
-    gnome3.gtkmm
-    imagemagick
     pkgconfig
   ];
 
-}
+  enableParallelBuilding = true;
 
+  installPhase = ''
+    mkdir -p $out/bin
+    mv *.out $out/bin
+  '';
+
+}

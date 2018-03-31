@@ -17,7 +17,7 @@ int main(int argc, char ** argv)
     int blurSize = atoi(argv[2]);
     if (blurSize % 2 != 1) blurSize++;  // ensure blur size is odd
     // blur sigma
-    double blurSigma = atof(argv[3]);
+    //double blurSigma = atof(argv[3]);
 
     const int NB_REPEAT = 3;
 

@@ -7,7 +7,7 @@ all: $(BIN)
 	@echo "run with: mpirun -n <nb_thread> <program> [args]"
 
 %.out: %.cpp
-	mpic++ -std=c++11 -Wall -Wextra -Wno-literal-suffix -O2 -o $@ $< 
+	mpic++ -std=c++11 -Wall -Wextra -Wno-literal-suffix -O2 -o $@ $<
 
 clean:
-	rm $(BIN)
+	rm -f $(BIN)
