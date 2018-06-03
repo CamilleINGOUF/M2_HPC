@@ -1,4 +1,3 @@
-
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -8,8 +7,8 @@
 #include <omp.h>
 
 // output data as a grayscale PNM image
-void writePnm(std::ostream &os, int width, int height, 
-        const std::vector<unsigned char> & data) 
+void writePnm(std::ostream &os, int width, int height,
+        const std::vector<unsigned char> & data)
 {
     os << "P2" << std::endl;
     os << width << ' ' << height << std::endl;
@@ -22,7 +21,7 @@ int main(int argc, char ** argv)
     // check command line arguments
     if (argc!=4 and argc!=3)
     {
-        std::cout << "usage; " << argv[0] 
+        std::cout << "usage; " << argv[0]
             << " <width> <height> [PNM filename] \n";
         return -1;
     }
@@ -31,7 +30,7 @@ int main(int argc, char ** argv)
     int width = std::stoi(argv[1]);
     int height = std::stoi(argv[2]);
     std::vector<unsigned char> data(width*height);
-    auto ind = [&data,width](int xx, int yy)->unsigned char& 
+    auto ind = [&data,width](int xx, int yy)->unsigned char&
     { return data[yy*width+xx]; };
 
     // start chrono
@@ -56,7 +55,7 @@ int main(int argc, char ** argv)
 
     // stop chrono
     double endTime = omp_get_wtime();
-    std::cout << argv[1] << ' ' << argv[2] << ' ' << endTime - startTime 
+    std::cout << argv[1] << ' ' << argv[2] << ' ' << endTime - startTime
         << std::endl;
 
     // write image in a file
@@ -68,4 +67,3 @@ int main(int argc, char ** argv)
 
     return 0;
 }
-

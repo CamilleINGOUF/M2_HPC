@@ -86,10 +86,14 @@ int main(int argc, char ** argv)
     std::cout << "width = " << argv[1] << std::endl;
     std::cout << "height = " << argv[2] << std::endl;
     std::cout << "nb proc = " << omp_get_max_threads() << std::endl;
-    std::cout << "delta time 1 = " << deltaTime1 << std::endl;
-    std::cout << "delta time 2 = " << deltaTime2 << std::endl;
-    std::cout << "delta time 3 = " << deltaTime3 << std::endl;
-    std::cout << "delta time 4 = " << deltaTime4 << std::endl;
+    std::cout << "delta time (sequential)                              = " 
+        << deltaTime1 << std::endl;
+    std::cout << "delta time (parallel, same RNG)                      = " 
+        << deltaTime2 << std::endl;
+    std::cout << "delta time (parallel, different RNG, same seed)      = " 
+        << deltaTime3 << std::endl;
+    std::cout << "delta time (parallel, different RNG, different seed) = " 
+        << deltaTime4 << std::endl;
 
     // write image in a file
     if (argc==4)
