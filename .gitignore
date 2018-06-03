@@ -2,4 +2,6 @@
 *~
 .*.swp
 *.out
-
+build
+*.so
+*.egg-info
