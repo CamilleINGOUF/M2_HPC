@@ -2,7 +2,7 @@ with import<nixpkgs> {};
 
 stdenv.mkDerivation {
 
-  name = "hpcOpenCL";
+  name = "hpcOpencl";
 
   src = ./.;
 
