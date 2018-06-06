@@ -21,6 +21,7 @@ _pyPkgs.buildPythonPackage {
     _pyPkgs.numpy
     _pyPkgs.pandas
     _pyPkgs.pkgconfig
+    _pyPkgs.tkinter
     openmpi
     eigen3_3
   ];

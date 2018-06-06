@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 
+import matplotlib as mpl
+mpl.use('TkAgg')
 import matplotlib.pyplot as plt
-import numpy
+
 import pandas
 import sys
 
 
 if __name__ == '__main__':
-    
-    if len(sys.argv) != 3:
-        print("usage:", sys.argv[0], "<datafile> <pngfile>")
+
+    if len(sys.argv) != 2:
+        print("usage:", sys.argv[0], "<datafile>")
         sys.exit(-1)
     DATAFILE = sys.argv[1]
-    PNGFILE = sys.argv[2]
 
     df = pandas.read_csv(DATAFILE, delimiter=" ")
 
@@ -29,5 +30,6 @@ if __name__ == '__main__':
     plt.xlabel('nb procs')
     plt.ylabel('speed-up')
     plt.grid()
-    plt.title(PNGFILE)
-    plt.savefig(PNGFILE)
+    plt.title('scalability')
+    # plt.savefig('out_scalability.png')
+    plt.show()
