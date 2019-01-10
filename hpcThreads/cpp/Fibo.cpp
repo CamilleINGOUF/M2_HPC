@@ -37,12 +37,23 @@ namespace Fibo {
   }
 
   //////////////////////////////////////////////////////////////////////
+  
+  void calculerBloc(std::vector<int> &data, int begin, int end){
+    for(unsigned i = begin; i < end; i++){
+      data[i] = FibonacciMod42(i);
+    }  
+  }  
 
   std::vector<int> fiboBlocs(int nbData) {
     // cree le tableau de donnees a calculer
     std::vector<int> data(nbData); 
     // calculer sur deux threads, par bloc
-    // TODO
+    int size = data.size();
+    std::thread th1(Fibo::calculerBloc, std::ref(data), 0, size/2);
+    std::thread th2(Fibo::calculerBloc, std::ref(data), size/2, size);
+    th1.join();
+    th2.join();
+
     return data;
   }
 
