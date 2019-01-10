@@ -59,11 +59,22 @@ namespace Fibo {
 
   //////////////////////////////////////////////////////////////////////
 
+  void calculCyclique(std::vector<int> &data, int begin, int step){
+	for(unsigned i = begin; i < data.size(); i += step){
+		data[i] = FibonacciMod42(i);
+	}	
+  }
+
   std::vector<int> fiboCyclique2(int nbData) {
     // cree le tableau de donnees a calculer
     std::vector<int> data(nbData); 
     // calculer sur deux threads, cycliquement
-    // TODO
+    std::thread th1(Fibo::calculCyclique, std::ref(data), 0, 2);
+    std::thread th2(Fibo::calculCyclique, std::ref(data), 1, 2);
+
+    th1.join();
+    th2.join();
+
     return data;
   }
 
@@ -71,7 +82,16 @@ namespace Fibo {
 
   std::vector<int> fiboCycliqueN(int nbData, int nbProc) {
     // cree le tableau de donnees a calculer
-    std::vector<int> data(nbData); 
+    std::vector<int> data(nbData);
+    std::vector<std::thread> threads(nbProc);
+
+    for(unsigned i = 0; i < threads.size(); i++){
+	threads[i] = std::thread(Fibo::calculCyclique, std::ref(data), i, nbProc);
+    }
+     
+    for(unsigned i = 0; i < threads.size(); i++){
+	threads[i].join();
+    } 
     // calculer sur N threads, cycliquement
     // TODO
     return data;

@@ -14,4 +14,6 @@ if __name__ == '__main__':
     # lance les calculs
     print("fiboSequentiel:\n", hpcThreads.fiboSequentiel(NB_DATA))
     print("fiboBlocs:\n", hpcThreads.fiboBlocs(NB_DATA))
-    # TODO
+    print("fuiboCyclique2\n", hpcThreads.fiboCyclique2(NB_DATA)) 
+    print("fuiboCycliqueN\n", hpcThreads.fiboCycliqueN(NB_DATA,4))
+# TODO
