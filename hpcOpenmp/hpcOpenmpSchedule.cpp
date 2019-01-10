@@ -38,18 +38,20 @@ int main(int argc, char ** argv)
 
     // compute image data
     // TODO
+    #pragma omp parallel for
     for (int x=0; x<width; x++)
     {
         for (int y=0; y<height; y++)
         {
             // diagonal gradient
             // TODO remove that
-            double t = (x+y) / sqrt(width*width + height*height);
-            double f = 2.0;
-            ind(x,y) = 127.0 * (1 + cos(2.0*M_PI*f*t));
+            // double t = (x+y) / sqrt(width*width + height*height);
+            // double f = 2.0;
+            // ind(x,y) = 127.0 * (1 + cos(2.0*M_PI*f*t));
 
             // put the color of the thread
             // TODO
+
         }
     }
 
