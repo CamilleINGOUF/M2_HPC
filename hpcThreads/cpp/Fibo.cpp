@@ -100,7 +100,17 @@ namespace Fibo {
   //////////////////////////////////////////////////////////////////////
 
   void fiboCycliqueNFake(int nbData, int nbProc) {
-    // calculer sur N threads, cycliquement, en ignorant le résultat
+    std::vector<int> data(nbData);
+    std::vector<std::thread> threads(nbProc);
+
+    for(unsigned i = 0; i < threads.size(); i++){
+	threads[i] = std::thread(Fibo::calculCyclique, std::ref(data), i, nbProc);
+    }
+     
+    for(unsigned i = 0; i < threads.size(); i++){
+	threads[i].join();
+    }
+	  // calculer sur N threads, cycliquement, en ignorant le résultat
     // TODO
   }
 
