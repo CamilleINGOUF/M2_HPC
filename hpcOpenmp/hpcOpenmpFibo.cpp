@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <omp.h>
 
 // calcule le Nieme terme de la suite de "Fibonacci modulo 42"
 // precondition : N >= 0
@@ -28,14 +29,26 @@ int main(int argc, char ** argv)
         return -1;
     }
 
+
     // calcule le tableau de donnees
     int nbData = std::stoi(argv[1]);
     std::vector<int> data(nbData); 
-    #pragma omp parallel for
+    double t1 = omp_get_wtime();
     for (int i=0; i<nbData; i++)
     {
         data[i] = FibonacciMod42(i);
     }
+    double t2 = omp_get_wtime();
+    std::cout << "time = " << (t2-t1) << std::endl;
+
+    t1 = omp_get_wtime();
+    #pragma omp parallel for schedule(static, 1)
+    for (int i=0; i<nbData; i++)
+    {
+        data[i] = FibonacciMod42(i);
+    }
+    t2 = omp_get_wtime();
+    std::cout << "time omp = " << (t2-t1) << std::endl;
 
     // ecrit les donnees calculees dans un fichier
     std::ofstream ofs("output.txt");
