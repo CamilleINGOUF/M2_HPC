@@ -19,9 +19,11 @@ setup(
     scripts=[
         'scripts/hpcMpiImageRun.sh',
         'scripts/hpcMpiImageSeq.py',
+        'scripts/hpcMpiImagePar.py',
         'scripts/hpcMpiPlot.py',
         'scripts/hpcMpiIntegralRun.sh',
         'scripts/hpcMpiIntegralSeq.py',
+        'scripts/hpcMpiIntegralPar.py',
         'scripts/hpcMpiHello2.py',
         'scripts/hpcMpiHello1.py']
 )

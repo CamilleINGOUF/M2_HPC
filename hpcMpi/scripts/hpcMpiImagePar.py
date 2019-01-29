@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import hpcMpi
 import sys
 from time import time
@@ -23,7 +22,6 @@ if __name__ == '__main__':
         sys.exit(-1)
     height, width = image1.shape
 
-
 	comm = MPI.COMM_WORLD
     worldRank = comm.Get_rank()
     worldSize = comm.Get_size()
@@ -31,7 +29,7 @@ if __name__ == '__main__':
     t0 = time()
 
     # compute blur
-    x0, x1, y0, y1 = 0, width, 0, height  # the whole image
+    x0, x1, y0, y1 = (width/worldSize) * worldRank, (width/worldSize) * (worldRank + 1), 0, height  # the whole image
     # x0, x1, y0, y1 = 400, 1000, 100, 400  # only the guy doing backloop
     image2 = hpcMpi.blur(image1, RADIUS, x0, x1, y0, y1)
 

@@ -31,6 +31,5 @@ if __name__ == '__main__':
     time = t1 - t0
     
     # output result
-    
     if (worldRank == 0):
         print(step, worldSize, all_results[0], time)

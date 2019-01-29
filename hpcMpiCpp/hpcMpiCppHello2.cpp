@@ -29,7 +29,7 @@ int main(int argc, char ** argv)
     else  // other nodes
     {
         // send message to master node
-        char outMsg[] = "hello";
+        char outMsg[] = "hello by ";
         MPI_Send(outMsg, sizeof(outMsg), MPI_CHAR, 0, 0, MPI_COMM_WORLD);         
     }
 
