@@ -73,6 +73,7 @@ std::vector<unsigned char> computeConvolutionParallel(
         { 1,  4,  6,  4,  1}
     };
     #pragma omp parallel for
+    
     for (int x=dk2; x<width-dk2; x++)
     {
         for (int y=dk2; y<height-dk2; y++)
@@ -94,7 +95,7 @@ std::vector<unsigned char> computeConvolutionParallel(
 }
 
 std::vector<unsigned char> computeConvolutionSeparate(
-        std::vector<unsigned char> & data1, int /*width*/, int /*height*/)
+        std::vector<unsigned char> & data1, int width, int height)
 {
     std::vector<unsigned char> data2(data1);
     // kernel 
@@ -103,7 +104,8 @@ std::vector<unsigned char> computeConvolutionSeparate(
     const int dk = 5;        // kernel size
     const int dk2 = dk/2;    // kernel half-size
     const int kernel[dk] = { 1,  4,  6,  4,  1 };
-    
+
+    l
 
     // TODO
     return data2;
