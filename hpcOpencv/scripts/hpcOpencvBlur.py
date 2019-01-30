@@ -7,11 +7,10 @@ import sys
 if __name__ == '__main__':
 
     # arguments
-    if len(sys.argv) != 3:
-        print("usage:", sys.argv[0], "<filename> <outfile>")
+    if len(sys.argv) != 2:
+        print("usage:", sys.argv[0], "<filename>")
         sys.exit(-1)
     FILENAME = sys.argv[1]
-    OUTFILE = sys.argv[2]
 
     # load input image
     imgIn = cv.imread(FILENAME)
@@ -21,11 +20,10 @@ if __name__ == '__main__':
 
     # compute output image
     t0 = time.time()
-    blur = cv.blur(imgIn,(201,100))
-    imgOut = blur
+    imgOut = cv.blur(imgIn,(100,100))
     t1 = time.time()
 
     # outputs
     print("time:", t1-t0, "s")
-    cv.imwrite(OUTFILE, imgOut)
+    cv.imwrite("out_blur_"+FILENAME, imgOut)
 

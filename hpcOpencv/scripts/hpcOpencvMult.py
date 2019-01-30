@@ -11,7 +11,6 @@ if __name__ == '__main__':
         print("usage:", sys.argv[0], "<filename> <MULT>")
         sys.exit(-1)
     FILENAME = sys.argv[1]
-    #OUTFILE = sys.argv[2]
 
     # load input image
     imgIn = cv.imread(FILENAME)
